@@ -74,6 +74,7 @@ btnHold.addEventListener('click', function () {
     if (scores[activePlayer] >= 100) {
       // set playing to false so when it finish code wont be executed
       playing = false;
+      diceShow.classList.add('hidden');
       //If so finish the game
       document
         .querySelector(`.player--${activePlayer}`)
