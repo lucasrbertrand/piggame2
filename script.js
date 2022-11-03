@@ -22,15 +22,28 @@ const playerSwitch = function () {
   player1El.classList.toggle('player--active');
 };
 
-// scores is an array to keep track of both points
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+//REFACTORED TO A FUNCTION FOR NEW GAME
+let scores, currentScore, activePlayer, playing;
 
-//Setting score to zero
-scoreP0.textContent = 0;
-scoreP1.textContent = 0;
+const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  scoreP0.textContent = '0';
+  scoreP1.textContent = '0';
+  currentP0.textContent = '0';
+  currentP1.textContent = '0';
+
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  diceShow.classList.remove('hidden');
+};
+
+init();
 
 // Removing Dice at the start of the game
 diceShow.classList.add('hidden');
@@ -88,3 +101,6 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+//reset button
+btnNew.addEventListener('click', init);
